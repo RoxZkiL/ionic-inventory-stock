@@ -1,0 +1,44 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 48px;
+
+    .login-logo {
+        width: 50%;
+        max-width: 164px;
+        min-width: 110px;
+        margin: 4rem auto 0 auto;
+    }
+}
+
+.form-section {
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.forgot-password {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 0.9rem;
+    color: #949494;
+    font-weight: 400;
+    transition: background-color 0.2s ease;
+}
+
+.forgot-password:active {
+    color: var(--ion-color-primary2);
+    transform: scale(0.99);
+}
+
+.error-message {
+    color: var(--ion-color-danger);
+    font-size: 0.85rem;
+    margin: -8px 0 16px 4px;
+}

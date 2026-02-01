@@ -1,37 +1,86 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* En lugar de *, aplicamos la fuente al html y body */
+html,
+body {
+    font-family: 'Inter', sans-serif !important;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafb !important;
+}
 
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+/* Forzamos que el host de la app ocupe todo el espacio */
+app-root {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+}
 
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+/* Contenedor base de Ionic */
+ion-content {
+    --background: #f9fafb !important;
+    height: 100%;
+}
 
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+/* Estilo de Inputs usando CSS Shadow Parts correctamente */
+/* Aplicar a todos los ion-input de la app */
+/* Reset de la estructura de Ionic para Standalone */
+ion-content {
+    --background: #ededed !important;
+}
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Estilo de Input basado en la propuesta visual */
+ion-input {
+    /* Variables de control de Ionic */
+    --background: #ffffff !important;
+    --color: #111827 !important;
+    --placeholder-color: #9ca3af !important;
+    --placeholder-opacity: 1;
+    --padding-start: 20px !important;
+    --border-radius: 10px !important;
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+    margin-bottom: 26px !important;
+    min-height: 56px !important;
+
+    /* La clave: Estilizar el contenedor interno (Shadow Part) */
+    &::part(container) {
+        background: #f3f4f6 !important;
+        border-radius: 16px !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Estilo del texto nativo interno */
+    &::part(native) {
+        font-weight: 500 !important;
+        color: #111827 !important;
+    }
+}
+
+/* Botón Indigo Premium */
+ion-button {
+    --border-radius: 16px !important;
+    --background: #4f46e5 !important;
+    --box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
+    height: 56px !important;
+    font-weight: 600 !important;
+    margin-top: 20px !important;
+}
+
+/* Clases de utilidad */
+.text-title {
+    color: #111827 !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.text-medium {
+    color: #6b7280 !important;
+    font-size: 1rem;
+    margin: 4px 0;
+}
+
+.ion-text-center {
+    text-align: center;
+}

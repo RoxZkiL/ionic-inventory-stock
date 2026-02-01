@@ -1,0 +1,32 @@
+<ion-content class="ion-padding">
+  <div class="login-container">
+
+    <div class="header-section">
+      <img src="assets/logos/logo.png" class="login-logo" />
+      <h1 class="text-title">StockWise</h1>
+      <p class="text-medium">Inicia sesión para continuar</p>
+    </div>
+
+    <form [formGroup]="loginForm">
+      <div class="form-section">
+
+        <ion-input formControlName="email" type="email" placeholder="Email" fill="solid"
+          [errorText]="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required') ? 'Debe ingresar un email' : loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email') ? 'Debe ser un email válido' : ''">
+        </ion-input>
+
+        <ion-input formControlName="password" type="password" placeholder="Contraseña" fill="solid"
+          [errorText]="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required') ? 'Debe ingresar una contraseña' : ''">
+        </ion-input>
+
+        <ion-button expand="block" class="login-button" (click)="login()">
+          <span *ngIf="!isLoading">Ingresar</span>
+          <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+        </ion-button>
+
+        <p class="forgot-password">¿Olvidaste tu contraseña?</p>
+
+      </div>
+    </form>
+
+  </div>
+</ion-content>
