@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonButton, IonContent, IonInput, IonSpinner } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonInput, IonInputPasswordToggle, IonSpinner } from '@ionic/angular/standalone';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, ReactiveFormsModule, IonButton, IonSpinner, IonInput]
+  imports: [IonContent, CommonModule, ReactiveFormsModule, IonButton, IonInput, IonInputPasswordToggle, IonSpinner]
 })
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
   errorMessage = '';
-  isLoading = false;
+  isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -49,4 +49,5 @@ export class LoginPage implements OnInit {
       this.isLoading = false;
     }
   }
+
 }

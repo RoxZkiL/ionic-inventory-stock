@@ -10,7 +10,8 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./login/login.page').then(m => m.LoginPage)
+    loadComponent: () => import('./login/login.page').then(m => m.LoginPage),
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
@@ -19,6 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'inventory-items',
-    loadComponent: () => import('./inventory-items/inventory-items.page').then( m => m.InventoryItemsPage)
+    loadComponent: () => import('./inventory-items/inventory-items.page').then(m => m.InventoryItemsPage),
+    canActivate: [AuthGuard]
   },
 ];

@@ -1,21 +1,17 @@
 import { Component } from '@angular/core';
-import { IonBackButton, IonButton, IonContent } from '@ionic/angular/standalone';
-import { AuthService } from '../core/services/auth.service';
-import { Router } from '@angular/router';
+import { IonContent } from '@ionic/angular/standalone';
+import { InventoryItemsPage } from '../inventory-items/inventory-items.page';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonContent, IonButton]
+  imports: [IonContent, InventoryItemsPage]
 })
 export class HomePage {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor() { }
 
-  async logout() {
-    await this.authService.logout();
-    this.router.navigate(['/login'], { replaceUrl: true });
-  }
+
 
 }

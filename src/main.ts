@@ -2,15 +2,18 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
-// Importa esto para que Ionic funcione
 import { provideIonicAngular } from '@ionic/angular/standalone';
+
+import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './app/core/interceptors/loading.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    // Esto inicializa los estilos y componentes de Ionic
     provideIonicAngular({
-      mode: 'md' // Forzamos el estilo moderno que diseñamos
-    })
+      mode: 'md'
+    }),
+    provideHttpClient(withInterceptorsFromDi()),
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ]
 }).catch(console.error);

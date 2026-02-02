@@ -1,0 +1,51 @@
+.ion-content-scroll-host {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.custom-toolbar {
+    --background: var(--ion-color-primary);
+    --color: #ffffff;
+
+    ion-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    ion-back-button {
+        --color: #ffffff;
+    }
+}
+
+.ion-no-border {
+    --ion-border-color: transparent;
+}
+
+.back-icon {
+    font-size: 28px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* Asegura que el contenedor principal ocupe toda la pantalla */
+.ion-page {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    padding-left: 10px;
+}

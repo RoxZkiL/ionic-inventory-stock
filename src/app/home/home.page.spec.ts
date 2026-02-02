@@ -15,4 +15,9 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have inventory items component', () => {
+    const element = fixture.nativeElement.querySelector('app-inventory-items');
+    expect(element).toBeTruthy();
+  });
 });

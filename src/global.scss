@@ -25,8 +25,11 @@ ion-content {
 /* Estilo de Inputs usando CSS Shadow Parts correctamente */
 /* Aplicar a todos los ion-input de la app */
 /* Reset de la estructura de Ionic para Standalone */
-ion-content {
+.main-content-container {
     --background: #ededed !important;
+    --padding-bottom: 20px;
+    --padding-start: 20px;
+    --padding-end: 20px;
 }
 
 /* Estilo de Input basado en la propuesta visual */

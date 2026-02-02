@@ -1,4 +1,4 @@
-<ion-content class="ion-padding">
+<ion-content class="main-content-container">
   <div class="login-container">
 
     <div class="header-section">
@@ -16,7 +16,10 @@
 
         <ion-input formControlName="password" type="password" placeholder="Contraseña" fill="solid"
           [errorText]="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required') ? 'Debe ingresar una contraseña' : ''">
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
         </ion-input>
+
+        <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
 
         <ion-button expand="block" class="login-button" (click)="login()">
           <span *ngIf="!isLoading">Ingresar</span>
