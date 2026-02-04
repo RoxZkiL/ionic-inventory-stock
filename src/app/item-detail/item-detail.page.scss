@@ -1,0 +1,68 @@
+.product-hero-bg {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 1rem 0 0.5rem 0;
+  .floating-img {
+    max-height: 160px;
+    filter: drop-shadow(0 12px 15px rgba(0,0,0,0.4));
+  }
+}
+
+.transparent-list {
+  background: transparent !important;
+  padding-bottom: 80px;
+}
+
+.edit-card {
+  --background: #FFFFFF !important;
+  --border-radius: 16px !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  --padding-start: 0px;
+
+  ion-input {
+    --background: transparent !important;
+    margin-bottom: 0 !important;
+
+    &::part(container) {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    &::part(label) {
+      color: #818cf8 !important;
+      font-weight: 700 !important;
+      font-size: 11px !important;
+      text-transform: uppercase;
+    }
+  }
+  
+  .text-area {
+    padding-left: 16px !important;
+  }
+
+}
+
+// Botón Flotante
+.custom-fab {
+  --background: #4f46e5 !important;
+  --color: #ffffff !important;
+  --box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4) !important;
+  --border-radius: 50% !important;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.price-tag {
+  color: #4f46e5;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.loader-container {
+  margin-top: 100px;
+}

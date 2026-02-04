@@ -1,6 +1,5 @@
 <div class="loader-overlay" *ngIf="isLoading$ | async">
     <div class="loader-container">
-        <!-- Assuming the logo path is correct based on our checks -->
-        <img src="assets/logos/logo.png" alt="Loading..." class="loader-logo">
+        <img src="assets/logos/logo.png" width="248" height="248" alt="Loading..." class="loader-logo" fetchpriority="high">
     </div>
 </div>

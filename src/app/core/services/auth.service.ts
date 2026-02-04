@@ -3,6 +3,7 @@ import { supabase } from 'src/app/core/client/supabase.client';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    private sessionPromise: Promise<any> | null = null;
 
     // ─────────────────────────────────────────────
     // Login
@@ -36,7 +37,20 @@ export class AuthService {
     // Esto es lo que el guard usa para verificar si hay sesión activa.
     // getSession() ya lee automáticamente del storage donde Supabase persistió la sesión.
     async getSession() {
-        const { data: { session } } = await supabase.auth.getSession();
-        return session;
+        // Si ya hay una petición de sesión en curso, devolvemos la misma promesa
+        if (this.sessionPromise) return this.sessionPromise;
+
+        this.sessionPromise = (async () => {
+            try {
+                const { data: { session } } = await supabase.auth.getSession();
+                return session;
+            } finally {
+                // Limpiamos la promesa después de un pequeño delay para permitir 
+                // que futuras verificaciones sean frescas, pero no simultáneas.
+                setTimeout(() => this.sessionPromise = null, 2000);
+            }
+        })();
+
+        return this.sessionPromise;
     }
 }

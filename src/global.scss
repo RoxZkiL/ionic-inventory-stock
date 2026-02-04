@@ -1,4 +1,3 @@
-/* En lugar de *, aplicamos la fuente al html y body */
 html,
 body {
     font-family: 'Inter', sans-serif !important;
@@ -9,22 +8,17 @@ body {
     background-color: #f9fafb !important;
 }
 
-/* Forzamos que el host de la app ocupe todo el espacio */
 app-root {
     display: block;
     height: 100vh;
     width: 100vw;
 }
 
-/* Contenedor base de Ionic */
 ion-content {
     --background: #f9fafb !important;
     height: 100%;
 }
 
-/* Estilo de Inputs usando CSS Shadow Parts correctamente */
-/* Aplicar a todos los ion-input de la app */
-/* Reset de la estructura de Ionic para Standalone */
 .main-content-container {
     --background: #ededed !important;
     --padding-bottom: 20px;
@@ -32,9 +26,7 @@ ion-content {
     --padding-end: 20px;
 }
 
-/* Estilo de Input basado en la propuesta visual */
 ion-input {
-    /* Variables de control de Ionic */
     --background: #ffffff !important;
     --color: #111827 !important;
     --placeholder-color: #9ca3af !important;
@@ -45,7 +37,6 @@ ion-input {
     margin-bottom: 26px !important;
     min-height: 56px !important;
 
-    /* La clave: Estilizar el contenedor interno (Shadow Part) */
     &::part(container) {
         background: #f3f4f6 !important;
         border-radius: 16px !important;
@@ -53,14 +44,12 @@ ion-input {
         box-shadow: none !important;
     }
 
-    /* Estilo del texto nativo interno */
     &::part(native) {
         font-weight: 500 !important;
         color: #111827 !important;
     }
 }
 
-/* Botón Indigo Premium */
 ion-button {
     --border-radius: 16px !important;
     --background: #4f46e5 !important;
@@ -70,7 +59,6 @@ ion-button {
     margin-top: 20px !important;
 }
 
-/* Clases de utilidad */
 .text-title {
     color: #111827 !important;
     font-weight: 700;
@@ -86,4 +74,39 @@ ion-button {
 
 .ion-text-center {
     text-align: center;
+}
+
+.custom-toolbar {
+    --background: var(--ion-color-primary);
+    --color: #ffffff;
+
+    ion-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    ion-back-button {
+        --color: #ffffff;
+    }
+}
+
+.menu-button {
+    color: #ffffff;
+}
+
+.ion-no-border {
+    --ion-border-color: transparent;
+}
+
+.back-icon {
+    font-size: 28px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    padding-left: 10px;
 }

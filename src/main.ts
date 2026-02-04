@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { provideIonicAngular } from '@ionic/angular/standalone';
@@ -9,9 +9,12 @@ import { LoadingInterceptor } from './app/core/interceptors/loading.interceptor'
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, 
+      withComponentInputBinding(),
+    ),
     provideIonicAngular({
-      mode: 'md'
+      mode: 'md',
+      animated: true
     }),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }

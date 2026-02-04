@@ -1,4 +1,15 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <app-sidebar-menu *ngIf="!isLoginPage"></app-sidebar-menu>
+  
+  <div class="ion-page" id="main-content">
+    <app-top-header 
+      *ngIf="!isLoginPage" 
+      [title]="pageTitle" 
+      [showBackButton]="showBackButton">
+    </app-top-header>
+
+    <ion-router-outlet></ion-router-outlet>
+  </div>
+
   <app-loader></app-loader>
 </ion-app>

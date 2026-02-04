@@ -1,0 +1,17 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-icon 
+      slot="start" 
+      name="chevron-back-outline" 
+      (click)="goBack()" 
+      class="back-icon"
+      *ngIf="showBackButton">
+    </ion-icon>
+
+    <ion-title [ngClass]="{ 'no-button-title': !showBackButton }">{{ title }}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button auto-hide="false" class="menu-button"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

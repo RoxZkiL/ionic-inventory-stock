@@ -1,41 +1,67 @@
-<ion-menu side="end" contentId="main-content">
-  <ion-header class="ion-no-border">
-    <ion-toolbar class="custom-toolbar">
-      <ion-title>Menú Lateral</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-list lines="none" (click)="logout()">
-      <ion-item button>
-        <ion-icon slot="start" name="log-out-outline"></ion-icon>
-        <ion-label>
-          <span *ngIf="!isLoading">Cerrar Sesión</span>
-          <span *ngIf="isLoading">Cerrando Sesión...
-            <ion-spinner name="crescent" class="loading-spinner" *ngIf="isLoading"></ion-spinner>
-          </span>
-        </ion-label>
-
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
 <div class="ion-page" id="main-content">
-  <ion-header class="ion-no-border">
-    <ion-toolbar class="custom-toolbar">
+  <ion-content class="main-content-container">
 
-      <ion-icon slot="start" name="chevron-back-outline" (click)="goBack()" class="back-icon"></ion-icon>
+    <div class="search-container">
+      <ion-searchbar mode="ios" animated="true" placeholder="Buscar producto..." show-clear-button="focus"
+        [(ngModel)]="searchTerm" (ionInput)="filterProducts()" (ionClear)="clearSearch()">
+      </ion-searchbar>
+    </div>
 
+    <ng-container *ngIf="isLoading; else productsList">
+      <ion-card *ngFor="let i of [1,2,3,4]">
+        <div class="card-container">
+          <div class="image-container">
+            <ion-skeleton-text animated style="width: 150px; height: 160px; border-radius: 8px;"></ion-skeleton-text>
+          </div>
+          <div style="flex: 1;">
+            <div class="title-label">
+              <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+            </div>
+            <div>
+              <ion-skeleton-text animated style="width: 40%; height: 20px; border-radius: 20px; display: inline-block;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 30%; height: 20px; border-radius: 16px; display: inline-block; margin-left: 8px;"></ion-skeleton-text>
+              <div class="price-label">
+                <ion-skeleton-text animated style="width: 50px; float: right;"></ion-skeleton-text>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-card>
+    </ng-container>
 
-      <ion-title>Inventario</ion-title>
+    <ng-template #productsList>
+      <ion-card *ngFor="let product of filteredProducts" (click)="navigateToDetail(product)">
+        <div class="card-container">
+          <div class="image-container">
+            <img 
+              [alt]="product.title" 
+              [src]="product.image" 
+              width="150" 
+              height="160" 
+              loading="lazy"
+              decoding="async" 
+              style="content-visibility: auto;">
+          </div>
+          <div style="flex: 1;">
+            <div class="title-label">{{product.title}}</div>
+            <div>
+              <ion-chip class="stock-chip">Stock: {{product.stock}}</ion-chip>
+              <div class="category-chip" [ngClass]="getCategoryClass(product.category)">{{product.category}}</div>
+              <div class="price-label">${{product.price}}</div>
+            </div>
+          </div>
+        </div>
+      </ion-card>
 
-      <ion-buttons slot="end">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
-      </ion-buttons>
+      <div *ngIf="filteredProducts.length === 0" class="ion-text-center ion-padding">
+        <p>No se encontraron productos.</p>
+      </div>
+    </ng-template>
 
-    </ion-toolbar>
-  </ion-header>
+    <ion-infinite-scroll threshold="60px" [disabled]="isInfiniteScrollDisabled" (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando más productos...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
-  <ion-content class="main-content-container ion-padding">
   </ion-content>
 </div>

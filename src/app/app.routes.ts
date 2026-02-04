@@ -11,16 +11,18 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./login/login.page').then(m => m.LoginPage),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then(m => m.HomePage),
-    canActivate: [AuthGuard]
+    loadComponent: () => import('./inventory-items/inventory-items.page').then(m => m.InventoryItemsPage),
+    canActivate: [AuthGuard],
+    data: { title: 'StockWise', showBack: false }
   },
   {
-    path: 'inventory-items',
-    loadComponent: () => import('./inventory-items/inventory-items.page').then(m => m.InventoryItemsPage),
-    canActivate: [AuthGuard]
+    path: 'item-detail/:id',
+    loadComponent: () => import('./item-detail/item-detail.page').then( m => m.ItemDetailPage),
+    canActivate: [AuthGuard],
+    data: { title: 'Detalle del Ítem', showBack: true }
   },
 ];

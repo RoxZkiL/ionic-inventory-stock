@@ -9,10 +9,11 @@
     margin-bottom: 48px;
 
     .login-logo {
-        width: 50%;
-        max-width: 164px;
-        min-width: 110px;
+        display: block;
+        width: 164px;   
+        height: 164px;  
         margin: 4rem auto 0 auto;
+        object-fit: contain;
     }
 }
 

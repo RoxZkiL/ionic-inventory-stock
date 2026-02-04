@@ -1,0 +1,50 @@
+<ion-content class="main-content-container">
+  @if (!loading) {
+    <div class="product-hero-bg">
+      <img [src]="item.image" class="floating-img" />
+    </div>
+
+    <div class="form-overlap-container">
+      <ion-list lines="none" class="transparent-list" mode="ios">
+        
+        <ion-item class="edit-card" mode="ios">
+          <ion-textarea label="Nombre" labelPlacement="stacked" name="title" [autoGrow]="true" [(ngModel)]="item.title" class="text-area"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="edit-card">
+          <ion-textarea label="Descripción" labelPlacement="stacked" name="desc" [autoGrow]="true" [(ngModel)]="item.description" class="text-area"></ion-textarea>
+        </ion-item>
+
+        <div class="row-inputs">
+          <ion-item class="edit-card flex-1">
+            <ion-input label="Categoría" labelPlacement="stacked" name="cat" [(ngModel)]="item.category"></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-item class="edit-card">
+          <ion-input label="Stock" labelPlacement="stacked" type="number" name="stock" [(ngModel)]="item.stock">
+            <div slot="end" class="input-value">{{ item.stock }}</div>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="edit-card">
+          <ion-input label="Precio" labelPlacement="stacked" type="number" name="price" [(ngModel)]="item.price">
+            <div slot="end" class="price-tag">${{ item.price }}</div>
+          </ion-input>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button class="custom-fab">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  } @else {
+    <div class="ion-text-center loader-container">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+    </div>
+  }
+</ion-content>

@@ -7,32 +7,6 @@
     overflow-y: auto;
 }
 
-.custom-toolbar {
-    --background: var(--ion-color-primary);
-    --color: #ffffff;
-
-    ion-title {
-        font-weight: 600;
-        font-size: 1.1rem;
-        text-align: center;
-    }
-
-    ion-back-button {
-        --color: #ffffff;
-    }
-}
-
-.ion-no-border {
-    --ion-border-color: transparent;
-}
-
-.back-icon {
-    font-size: 28px;
-    padding: 12px;
-    cursor: pointer;
-}
-
-/* Asegura que el contenedor principal ocupe toda la pantalla */
 .ion-page {
     visibility: visible;
     position: absolute;
@@ -44,8 +18,159 @@
     flex-direction: column;
 }
 
-.loading-spinner {
-    width: 20px;
-    height: 20px;
-    padding-left: 10px;
+.image-container {
+  background-color: #f0f0f0; // Color de placeholder
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    // Esto evita que la imagen aparezca de golpe
+    animation: fadeIn 0.5s ease-in;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+ion-card {
+    margin: 12px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:active {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    &:hover .image-container {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        
+        img {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.card-container {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    background: #ffffff;
+}
+
+.title-label {
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+}
+
+.price-label {
+    font-weight: 700;
+    text-align: right;
+    color: #667eea;
+    margin-top: 12px;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+
+/* Chip Components */
+.stock-chip {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+    border-radius: 20px;
+}
+
+.category-chip {
+    font-size: 11px;
+    font-weight: 600;
+    margin: 6px 4px 0 0;
+    color: #ffffff;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 16px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Category Gradients */
+.category-electronics { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+}
+
+.category-womens-clothing { 
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
+}
+
+.category-mens-clothing { 
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
+}
+
+.category-jewelery { 
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); 
+}
+
+.category-default { 
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
+}
+
+.search-container {
+    margin-top: 0.5rem;
+
+    ::ng-deep input::-webkit-search-cancel-button {
+        display: none !important;
+        -webkit-appearance: none;
+    }
+}
+
+/* Estilo para que el skeleton ocupe el espacio correcto */
+ion-skeleton-text {
+  --background: rgba(0, 0, 0, 0.06);
+  --background-focused: rgba(0, 0, 0, 0.12);
+}
+
+.image-container {
+  min-width: 150px; /* Evita que la tarjeta colapse antes de cargar la imagen */
+  min-height: 160px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  overflow: hidden;
+  
+  img {
+    object-fit: contain; /* Para que las fotos de productos no se deformen */
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Mejora la alineación del contenido de la derecha */
+.card-container > div:last-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

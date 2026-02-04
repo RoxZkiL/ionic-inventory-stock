@@ -1,10 +1,25 @@
 import { Injectable } from '@angular/core';
 import { supabase } from 'src/app/core/client/supabase.client';
 import { CreateProductDTO, Product, UpdateProductDTO } from '../models/product.model';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
+
+   private selectedProductSource = new BehaviorSubject<Product | null>(null);
+    
+    // Este es el que escuchará el componente de detalle
+    selectedProduct$ = this.selectedProductSource.asObservable();
+
+    // Método para guardar el producto antes de navegar
+    setSelectedProduct(product: Product) {
+        this.selectedProductSource.next(product);
+    }
+
+    clearSelectedProduct() {
+        this.selectedProductSource.next(null);
+    }
 
     // ─────────────────────────────────────────────
     // READ
@@ -17,7 +32,15 @@ export class ProductService {
             .order('title', { ascending: true });
 
         if (error) throw error;
-        return data;
+
+        return data.map(product => {
+            if (product.image) {
+            if (product.image.startsWith('http')) {
+                product.image = `https://images.weserv.nl/?url=${encodeURIComponent(product.image)}&w=300&h=320&fit=cover`;
+            }
+            }
+            return product;
+        });
     }
 
     async getProductById(id: string): Promise<Product> {
@@ -25,7 +48,7 @@ export class ProductService {
             .from('products')
             .select('*')
             .eq('id', id)
-            .single();       // .single() retorna un objeto, no un array
+            .single();
 
         if (error) throw error;
         return data;
@@ -39,7 +62,7 @@ export class ProductService {
         const { data, error } = await supabase
             .from('products')
             .insert(product)
-            .select()        // .select() retorna el objeto creado
+            .select()
             .single();
 
         if (error) throw error;

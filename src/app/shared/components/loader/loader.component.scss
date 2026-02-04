@@ -18,9 +18,9 @@
 }
 
 .loader-logo {
-    width: 180px;
-    height: auto;
-    animation: pulse 1.5s infinite ease-in-out;
+    width: 150px;
+    height: 150px;
+    content-visibility: auto;
 }
 
 @keyframes pulse {

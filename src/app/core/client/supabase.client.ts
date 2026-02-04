@@ -6,7 +6,10 @@ export const supabase = createClient(
     environment.apiKey,
     {
         auth: {
-            persistSession: true
+            autoRefreshToken: true,  // Deja que Supabase lo maneje internamente
+            persistSession: true,
+            detectSessionInUrl: true,
+            flowType: 'pkce'        // Si usas flujos modernos, esto ayuda a la estabilidad
         }
     }
 );

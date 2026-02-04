@@ -1,0 +1,15 @@
+.ion-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+app-top-header {
+  display: block;
+  z-index: 100;
+}
+
+ion-router-outlet {
+  flex: 1;
+  position: relative;
+}
